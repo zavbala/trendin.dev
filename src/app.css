@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	/* outline: 1px solid red; */
+}
+
+@layer base {
+	body {
+		@apply bg-bunker text-white;
+	}
+
+	a,
+	svg,
+	img,
+	span {
+		@apply block;
+	}
+
+	button,
+	select {
+		@apply appearance-none w-full block bg-transparent;
+	}
+}

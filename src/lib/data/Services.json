@@ -1,0 +1,40 @@
+{
+	"GITHUB": {
+		"base": "https://github.com/trending",
+		"schema": {
+			"topic": "> h1 > a > span",
+			"tagline": "> p",
+			"source": "> h1 > a"
+		},
+		"selector": "article"
+	},
+	"PRODUCTHUNT": {
+		"base": "https://api.producthunt.com/v1/posts",
+		"schema": {
+			"topic": "name",
+			"tagline": "tagline",
+			"votes": "votes_count",
+			"source": "redirect_url",
+			"thumbnail": "thumbnail.image_url"
+		},
+		"entry": "posts",
+		"token": ["Bearer", "PRODUCT_HUNT_DEV_TOKEN"]
+	},
+	"INDIEHACKERS": {
+		"base": "https://www.indiehackers.com",
+		"schema": {
+			"topic": "> div > a",
+			"votes": "> a > span",
+			"source": "> div > a"
+		},
+		"selector": "div.feed-item"
+	},
+	"HACKERNEWS": {
+		"base": "https://news.ycombinator.com",
+		"schema": {
+			"topic": "a.titlelink",
+			"source": "a.titlelink"
+		},
+		"selector": "tr.athing"
+	}
+}
