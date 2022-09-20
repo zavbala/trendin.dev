@@ -16,7 +16,11 @@
 <nav class="h-[10vh] w-full border border-charade sticky top-0 z-20 bg-bunker">
 	<div class="max-w-7xl h-full mx-auto flex items-center justify-between p-3">
 		<div class="flex gap-x-3">
-			<button class="p-3 hover:bg-gray-900" on:click={() => event('showSidebar')}>
+			<button
+				class="p-3 hover:bg-gray-900"
+				on:click={() => event('showSidebar')}
+				title={$preview.showSidebar ? 'Hide Sidenav' : 'Show Sidenav'}
+			>
 				<Icon src={Bars3} theme="outline" class="w-7 sm:block" />
 			</button>
 		</div>
