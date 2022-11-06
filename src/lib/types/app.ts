@@ -1,8 +1,8 @@
 export interface Item {
 	topic: string;
-	tagline: string;
+	tagline?: string;
 	thumbnail?: string;
-	votes?: number;
+	votes?: number | string;
 	source: string;
 }
 
@@ -13,5 +13,10 @@ export interface Service {
 	selector?: string;
 	entry?: string;
 	params?: Record<string, string[]>;
-	token: ['Bearer' | string, string];
+	token?: string[];
+	path?: string;
+}
+
+export interface Services {
+	[key: string]: Partial<Service>;
 }

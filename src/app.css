@@ -6,20 +6,37 @@
 	/* outline: 1px solid red; */
 }
 
+::selection {
+	background: #7f5af0;
+	color: #fff;
+}
+
 @layer base {
 	body {
-		@apply bg-bunker text-white;
+		@apply bg-woodsmoke text-white;
 	}
 
 	a,
 	svg,
 	img,
-	span {
+	span,
+	button,
+	select {
 		@apply block;
 	}
 
 	button,
 	select {
-		@apply appearance-none w-full block bg-transparent;
+		@apply appearance-none bg-transparent;
+	}
+}
+
+@layer components {
+	.flex-center {
+		@apply flex justify-center items-center;
+	}
+
+	.animation {
+		@apply transform hover:-translate-y-1 duration-75;
 	}
 }

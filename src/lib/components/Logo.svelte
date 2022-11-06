@@ -18,6 +18,6 @@
 </script>
 
 <div class="flex items-center gap-x-1">
-	<h2 class="uppercase font-body font-bold {titleSize}"> .dev </h2>
+	<h2 class="uppercase font-body font-bold {titleSize}"> {import.meta.env.VITE_APP_NAME} </h2>
 	<Icon src={ArrowTrendingUp} theme="outline" class="text-white {iconSize}" />
 </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import App from '$lib/components/Logo.svelte';
 	import { preview, toggle } from '$lib/stores/preview';
-	import { Bars3 } from '@steeze-ui/heroicons';
+	import { Bars2, XMark } from '@steeze-ui/heroicons';
 	import { Icon } from '@steeze-ui/svelte-icon';
 
 	$: actions = {
@@ -13,18 +13,16 @@
 	const event = (key: keyof typeof actions) => toggle(key, actions[key]);
 </script>
 
-<nav class="h-[10vh] w-full border border-charade sticky top-0 z-20 bg-bunker">
-	<div class="max-w-7xl h-full mx-auto flex items-center justify-between p-3">
-		<div class="flex gap-x-3">
-			<button
-				class="p-3 hover:bg-gray-900"
-				on:click={() => event('showSidebar')}
-				title={$preview.showSidebar ? 'Hide Sidenav' : 'Show Sidenav'}
-			>
-				<Icon src={Bars3} theme="outline" class="w-7 sm:block" />
-			</button>
-		</div>
+<nav class="h-[10vh] w-full sticky top-0 z-20 bg-woodsmoke">
+	<div class="max-w-7xl h-full mx-auto flex-center justify-between p-3">
+		<div class="hidden lg:block" />
+
+		<button class="p-3 lg:hidden block" on:click={() => event('showSidebar')}>
+			<Icon src={$preview.showSidebar ? XMark : Bars2} theme="outline" class="w-7 sm:block" />
+		</button>
+
 		<App />
+
 		<div />
 	</div>
 </nav>

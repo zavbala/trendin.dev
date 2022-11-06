@@ -11,5 +11,5 @@ export async function load({ params, fetch }: LoadEvent) {
 		throw error(404, 'Not found');
 	}
 
-	return { items };
+	return { items, tag: params?.slug };
 }

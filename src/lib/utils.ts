@@ -1,26 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Item } from '$lib/types/app';
 
-export const normalizeHTML = (schema: Item, node: unknown, relative?: string) => {
+export const normalizeHTML = (schema: Item, node: unknown, relative?: string | null) => {
 	const data: Partial<Item> = {};
 
 	for (const [key, value] of Object.entries(schema)) {
 		let computed = null;
-		const query = (node as HTMLElement).querySelector(value);
+		const tag = (node as HTMLElement).querySelector(value);
 
 		switch (key) {
-			case 'source':
-				computed = relative?.length
-					? relative + query.attributes['href']
-					: query.attributes['href'];
+			case 'source': {
+				const href = tag.attributes['href'];
+				computed = relative ? relative + href : href;
 				break;
+			}
 
 			case 'thumbnail':
-				computed = query.attributes['src'];
+				computed = tag.attributes['src'];
 				break;
 
 			default:
-				computed = query?.innerText.trim();
+				computed = tag?.innerText.trim();
 				break;
 		}
 		data[key as keyof Item] = computed ?? '';

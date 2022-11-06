@@ -32,8 +32,8 @@
 	"HACKERNEWS": {
 		"base": "https://news.ycombinator.com",
 		"schema": {
-			"topic": "a.titlelink",
-			"source": "a.titlelink"
+			"topic": "span.titleline > a",
+			"source": "span.titleline > a"
 		},
 		"selector": "tr.athing"
 	}
