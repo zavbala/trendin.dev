@@ -1,0 +1,33 @@
+{
+	"npm": {
+		"source": "",
+		"icon": "fa-npm"
+	},
+	"pip": {
+		"source": "https://pypistats.org/api/packages/pip/recent",
+		"icon": "fa-python"
+	},
+	"brew": {
+		"icon": "fa-apple",
+		"source": "https://formulae.brew.sh/api/analytics/install/30d.json",
+		"schema": {
+			"name": "formula",
+			"downloads": "count"
+		},
+		"entry": "items",
+		"options": ["formula", "cask"]
+	},
+	"pacman": {
+		"icon": "fa-linux",
+		"source": "https://www.archlinux.org/mirrors/status/json/"
+	},
+	"crates": {
+		"icon": "fa-rust",
+		"source": "https://crates.io/api/v1/summary",
+		"schema": {
+			"name": "name",
+			"downloads": "downloads"
+		},
+		"entry": "most_recently_downloaded"
+	}
+}

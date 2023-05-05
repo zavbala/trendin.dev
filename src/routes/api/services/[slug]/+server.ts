@@ -1,30 +1,49 @@
 import { env } from '$env/dynamic/private';
-import Services from '$lib/data/Services.json';
-import type { Service } from '$lib/types/app';
-import { normalizeHTML, normalizeJSON } from '$lib/utils';
-import { error, type RequestEvent } from '@sveltejs/kit';
+import Social from '$lib/data/Social.json';
+import { getAttrByPath, normalizeHTML, normalizeJSON } from '$lib/utils';
+import { error, json, type RequestEvent } from '@sveltejs/kit';
 import { parse } from 'node-html-parser';
 
-export const GET = async ({ params, setHeaders }: RequestEvent) => {
+import type { Social as iSocial } from '$lib/types/app';
+
+const DOMAINS = ['www.indiehackers.com', 'github.com', 'marketplace.visualstudio.com'];
+
+export const GET = async ({ params, url }: RequestEvent) => {
 	const { slug } = params;
-	const service = Services[slug as keyof typeof Services] as Service;
+	const service = Social[slug as keyof typeof Social] as iSocial;
 
 	if (!service) throw error(404, 'Not Found');
 	const { schema, base, ...props } = service;
+
+	const { searchParams } = new URL(url);
+	const sortBy = searchParams.get('sortBy');
+	const withArgs = 'args' in props;
+
+	let fetchURL = base;
+	if (withArgs) fetchURL += `?${new URLSearchParams(props.args).toString()}`;
+
+	if (sortBy && service.options?.includes(sortBy)) {
+		if (service.sort === 'byQueryParams') {
+			fetchURL += `?sortBy=${sortBy}`;
+		} else if (service.sort === 'byPathParams') {
+			fetchURL += `/${sortBy}`;
+		}
+	}
 
 	let items = [];
 	const byRESTService = !('selector' in props);
 
 	const { origin, hostname } = new URL(base);
-	const blacklist = ['www.indiehackers.com', 'github.com'].includes(hostname);
+	const blacklist = DOMAINS.includes(hostname);
 
-	const resp = await fetch(base, {
+	const resp = await fetch(fetchURL, {
 		method: 'GET',
 		headers: new Headers({
 			'User-Agent': 'REST/1.0.0',
 			...(byRESTService &&
+				props.token?.length &&
 				(() => {
-					const [prefix, token] = props.token;
+					const [prefix, token] = props.token as string[];
 					return { Authorization: prefix + ' ' + env[token] };
 				})())
 		})
@@ -32,7 +51,7 @@ export const GET = async ({ params, setHeaders }: RequestEvent) => {
 
 	if (byRESTService) {
 		const data = await resp.json();
-		items = (data[props.entry as string] as Record<string, unknown>[]).map((data) =>
+		items = getAttrByPath(data, props.entry as string).map((data: Record<string, unknown>) =>
 			normalizeJSON(schema, data)
 		);
 	} else {
@@ -42,8 +61,5 @@ export const GET = async ({ params, setHeaders }: RequestEvent) => {
 			.map((node) => normalizeHTML(schema, node, blacklist ? origin : null));
 	}
 
-	setHeaders({ 'Content-Type': 'application/json' });
-
-	const json = JSON.stringify(items);
-	return new Response(json);
+	return json({ items, tabs: service.options });
 };

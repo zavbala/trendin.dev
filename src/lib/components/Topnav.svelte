@@ -1,7 +1,7 @@
 <script lang="ts">
-	import App from '$lib/components/Logo.svelte';
+	import { browser } from '$app/environment';
 	import { preview, toggle } from '$lib/stores/preview';
-	import { Bars2, XMark } from '@steeze-ui/heroicons';
+	import { ArrowsRightLeft, Bars2, XMark } from '@steeze-ui/heroicons';
 	import { Icon } from '@steeze-ui/svelte-icon';
 
 	$: actions = {
@@ -11,18 +11,30 @@
 	};
 
 	const event = (key: keyof typeof actions) => toggle(key, actions[key]);
+
+	$: if ($preview.theme) {
+		if (browser) {
+			document.documentElement.setAttribute('data-theme', $preview.theme);
+		}
+	}
 </script>
 
-<nav class="h-[10vh] w-full sticky top-0 z-20 bg-woodsmoke">
+<nav class="md:h-[7vh] w-full sticky top-0 z-20 bg-woodsmoke border-b border-shark">
 	<div class="max-w-7xl h-full mx-auto flex-center justify-between p-3">
-		<div class="hidden lg:block" />
+		<div class="lg:block hidden" />
 
 		<button class="p-3 lg:hidden block" on:click={() => event('showSidebar')}>
 			<Icon src={$preview.showSidebar ? XMark : Bars2} theme="outline" class="w-7 sm:block" />
 		</button>
 
-		<App />
-
-		<div />
+		<div class="flex gap-x-3">
+			<button
+				type="button"
+				class="action lg:flex hidden"
+				on:click={() => toggle('direction', actions.direction)}
+			>
+				<Icon src={ArrowsRightLeft} theme="outline" class="w-6" />
+			</button>
+		</div>
 	</div>
 </nav>

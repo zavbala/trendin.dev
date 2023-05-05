@@ -1,22 +1,38 @@
 export interface Item {
 	topic: string;
+	source: string;
 	tagline?: string;
 	thumbnail?: string;
 	votes?: number | string;
-	source: string;
 }
 
-export interface Service {
-	base: string;
-	schema: Item;
-	auth: string[];
-	selector?: string;
+export interface Props {
+	icon: string;
 	entry?: string;
-	params?: Record<string, string[]>;
-	token?: string[];
-	path?: string;
+	schema: Record<string, string>;
 }
 
-export interface Services {
-	[key: string]: Partial<Service>;
+export interface Social extends Props {
+	base: string;
+	auth?: string[];
+	token?: string[];
+	selector?: string;
+	options?: string[];
+	args?: Record<string, string>;
+	params?: Record<string, string[]>;
+	sort?: 'byQueryParams' | 'byPathParams';
+}
+
+export interface App {
+	name: string;
+	icon: string;
+	cover: string;
+	source: string;
+	tagline: string;
+}
+
+export interface Package extends Props {
+	name: string;
+	source: string;
+	downloads: string;
 }

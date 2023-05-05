@@ -17,7 +17,6 @@
 	}[size];
 </script>
 
-<div class="flex items-center gap-x-1">
-	<h2 class="uppercase font-body font-bold {titleSize}"> {import.meta.env.VITE_APP_NAME} </h2>
-	<Icon src={ArrowTrendingUp} theme="outline" class="text-white {iconSize}" />
+<div class="bg-white rounded p-2">
+	<Icon src={ArrowTrendingUp} theme="outline" class="text-black w-5 {iconSize}" />
 </div>

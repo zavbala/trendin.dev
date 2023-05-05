@@ -1,0 +1,64 @@
+{
+	"github": {
+		"icon": "fa-github",
+		"base": "https://github.com/trending",
+		"schema": {
+			"topic": "> h2 > a > span",
+			"tagline": "> p",
+			"source": "> h2 > a",
+			"votes": ""
+		},
+		"selector": "article",
+		"options": ["global", "javascript", "typescript", "python", "rust"],
+		"sort": "byPathParams"
+	},
+	"product-hunt": {
+		"icon": "fa-product-hunt",
+		"base": "https://api.producthunt.com/v1/posts",
+		"schema": {
+			"topic": "name",
+			"tagline": "tagline",
+			"votes": "votes_count",
+			"source": "redirect_url",
+			"thumbnail": "thumbnail.image_url"
+		},
+		"entry": "posts",
+		"token": ["Bearer", "PRODUCT_HUNT_DEV_TOKEN"]
+	},
+	"indie-hackers": {
+		"icon": "fa-hackerrank",
+		"base": "https://www.indiehackers.com",
+		"schema": {
+			"topic": "> div > a",
+			"votes": "> a > span",
+			"source": "> div > a"
+		},
+		"selector": "div.feed-item"
+	},
+	"hacker-news": {
+		"icon": "fa-y-combinator",
+		"base": "https://news.ycombinator.com",
+		"schema": {
+			"topic": "span.titleline > a",
+			"source": "span.titleline > a",
+			"votes": "span.subline > span.score"
+		},
+		"selector": "tr.athing",
+		"options": ["newest", "show", "ask", "jobs"],
+		"sort": "byPathParams"
+	},
+	"vscode": {
+		"icon": "fa-microsoft",
+		"base": "https://marketplace.visualstudio.com/getextensionspercategory",
+		"args": {
+			"Product": "vscode"
+		},
+		"schema": {
+			"topic": "t",
+			"source": "l",
+			"thumbnail": "i"
+		},
+		"entry": "epc.2.e",
+		"options": ["today", "this week", "this month"]
+	}
+}

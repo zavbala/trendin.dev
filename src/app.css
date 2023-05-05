@@ -13,7 +13,15 @@
 
 @layer base {
 	body {
-		@apply bg-woodsmoke text-white;
+		@apply text-white;
+	}
+
+	input {
+		@apply w-full appearance-none bg-transparent;
+	}
+
+	input:focus {
+		@apply outline-none;
 	}
 
 	a,
@@ -33,10 +41,22 @@
 
 @layer components {
 	.flex-center {
-		@apply flex justify-center items-center;
+		@apply flex items-center justify-center;
 	}
 
 	.animation {
-		@apply transform hover:-translate-y-1 duration-75;
+		@apply transform duration-75 hover:-translate-y-1;
+	}
+
+	.action {
+		@apply flex h-10 w-10 items-center justify-center rounded bg-shark p-2;
+	}
+
+	.card {
+		@apply animation relative cursor-pointer select-none rounded border-white/20 bg-shark p-7 shadow;
+	}
+
+	.pill {
+		@apply flex gap-x-2 rounded-full bg-white/10 px-3 py-1 text-sm;
 	}
 }

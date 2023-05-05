@@ -1,35 +1,41 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { Item } from '$lib/types/app';
 
-export const normalizeHTML = (schema: Item, node: unknown, relative?: string | null) => {
-	const data: Partial<Item> = {};
+import type { Item } from '$lib/types/app';
+import type { HTMLElement } from 'node-html-parser';
+
+export const normalizeHTML = (
+	schema: Record<string, string>,
+	node: HTMLElement,
+	relative?: string | null
+) => {
+	const data: { [key: string]: any } = {};
 
 	for (const [key, value] of Object.entries(schema)) {
 		let computed = null;
-		const tag = (node as HTMLElement).querySelector(value);
+		const tag = node.querySelector(value);
 
 		switch (key) {
 			case 'source': {
-				const href = tag.attributes['href'];
+				const href = tag?.attributes['href'];
 				computed = relative ? relative + href : href;
 				break;
 			}
 
 			case 'thumbnail':
-				computed = tag.attributes['src'];
+				computed = tag?.attributes['src'];
 				break;
 
 			default:
 				computed = tag?.innerText.trim();
 				break;
 		}
-		data[key as keyof Item] = computed ?? '';
+		data[key] = computed ?? '';
 	}
 
 	return data;
 };
 
-export const normalizeJSON = (schema: Item, item: Record<string, unknown>) => {
+export const normalizeJSON = (schema: Record<string, string>, item: Record<string, unknown>) => {
 	const data: Partial<Item> = {};
 
 	for (const [key, value] of Object.entries(schema)) {

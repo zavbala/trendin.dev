@@ -1,10 +1,15 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 	import { page } from '$app/stores';
+	import Newsletter from '$lib/components/Newsletter.svelte';
 	import Sidenav from '$lib/components/Sidenav.svelte';
 	import Topnav from '$lib/components/Topnav.svelte';
 	import { preview } from '$lib/stores/preview';
+	import { inject } from '@vercel/analytics';
+
 	import '../app.css';
+
+	inject({ mode: dev ? 'development' : 'production' });
 
 	$: pathname = $page.url.pathname;
 	$: link = import.meta.env.VITE_DOMAIN + pathname;
@@ -42,12 +47,15 @@
 		<Sidenav />
 	{/if}
 
-	<div class="lg:col-span-7 col-span-12 flex-center flex-col gap-y-3 mb-5 p-3">
+	<div class="lg:col-span-7 col-span-12 flex flex-col gap-y-3 mb-5 px-5">
 		<slot />
 	</div>
 
 	<div class="lg:col-span-3 col-span-12 p-3">
-		<div class="bg-shark w-full h-[250px] rounded mx-auto" />
+		<div class="bg-shark w-full h-[250px] rounded-lg mx-auto shadow" />
+
+		<Newsletter />
+
 		<footer class="mt-7">
 			<a
 				target="_blank"

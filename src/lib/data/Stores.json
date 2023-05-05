@@ -1,0 +1,28 @@
+{
+	"apple": {
+		"base": "https://amp-api.apps.apple.com/v1/editorial/us/today",
+		"args": {
+			"l": "en-us",
+			"sparseLimit": "42",
+			"platform": "iphone",
+			"additionalPlatforms": "ipad"
+		},
+		"headers": {
+			"Origin": "https://www.apple.com",
+			"Referer": "https://www.apple.com/app-store"
+		},
+		"schema": {
+			"name": "attributes.editorialNotes.name",
+			"tagline": "attributes.editorialNotes.short",
+			"cover": "attributes.editorialArtwork.dayCard.url",
+			"source": "relationships.card-contents.data.0.attributes.url",
+			"icon": "relationships.card-contents.data.0.attributes.platformAttributes.ios.artwork.url"
+		},
+		"replace": {
+			"icon": ["{w}x{h}{c}.{f}", "800x800"],
+			"cover": ["{w}x{h}{c}.{f}", "1600x980"]
+		},
+		"entry": "results.data.0.contents",
+		"token": "APPLE_STORE_TOKEN"
+	}
+}

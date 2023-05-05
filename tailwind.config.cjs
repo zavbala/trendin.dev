@@ -8,9 +8,8 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				shark: '#242629',
-				woodsmoke: '#16161a',
-				cornflower: '#7F5AF0'
+				shark: '#1b1d1f',
+				woodsmoke: '#0f1113'
 			}
 		}
 	},
