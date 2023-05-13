@@ -2,12 +2,18 @@
 	import type { Item } from '$lib/types/app';
 
 	export let item: Item;
-	export let className: string = '';
+	export let className = '';
+	export let prefix: string | null = null;
 
 	const { tagline, topic, thumbnail, source, votes } = item;
 </script>
 
-<a href="source" target="_blank" rel="noreferrer" class="card {className}">
+<a
+	target="_blank"
+	class="card {className}"
+	rel="noreferrer noopener"
+	href={prefix ? prefix + source : source}
+>
 	<div class="flex items-center gap-x-4">
 		{#if thumbnail}
 			<img

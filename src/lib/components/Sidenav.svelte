@@ -1,21 +1,15 @@
 <script lang="ts">
 	import Menu from '$lib/components/Menu.svelte';
-	import { toggle } from '$lib/stores/preview';
 
 	import Packages from '$lib/data/Packages.json';
 	import Social from '$lib/data/Social.json';
 
+	const Sticky = 'lg:sticky lg:top-0 lg:h-screen';
 	const Responsive = 'lg:static lg:col-span-2 lg:mt-0 lg:z-0';
-	const Style = 'top-0 fixed mt-[10vh] z-50 w-full h-[90vh] border-r border-shark p-4 bg-woodsmoke';
-
-	const event = () => {
-		if (window.innerWidth <= 820) {
-			toggle('showSidebar', false);
-		}
-	};
+	const Style = 'top-0 fixed mt-[7vh] z-50 w-full h-[93vh] border-r border-shark p-4 bg-woodsmoke';
 </script>
 
-<aside class="{Responsive} {Style}">
+<aside class="{Responsive} {Style} {Sticky}">
 	<a href="/"> HOME </a>
 	<Menu sub="tag" title="social" children={Social} />
 	<Menu sub="pkg" title="packages" children={Packages} />

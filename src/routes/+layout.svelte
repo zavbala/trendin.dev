@@ -4,12 +4,19 @@
 	import Newsletter from '$lib/components/Newsletter.svelte';
 	import Sidenav from '$lib/components/Sidenav.svelte';
 	import Topnav from '$lib/components/Topnav.svelte';
-	import { preview } from '$lib/stores/preview';
+	import { preview, toggle } from '$lib/stores/preview';
 	import { inject } from '@vercel/analytics';
 
+	import { afterNavigate } from '$app/navigation';
 	import '../app.css';
 
 	inject({ mode: dev ? 'development' : 'production' });
+
+	afterNavigate(() => {
+		if (window.innerWidth <= 820) {
+			toggle('showSidebar', false);
+		}
+	});
 
 	$: pathname = $page.url.pathname;
 	$: link = import.meta.env.VITE_DOMAIN + pathname;
@@ -51,7 +58,7 @@
 		<slot />
 	</div>
 
-	<div class="lg:col-span-3 col-span-12 p-3">
+	<div class="large-sticky lg:col-span-3 col-span-12 p-5">
 		<div class="bg-shark w-full h-[250px] rounded-lg mx-auto shadow" />
 
 		<Newsletter />

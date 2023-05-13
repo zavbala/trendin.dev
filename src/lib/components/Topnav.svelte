@@ -19,7 +19,7 @@
 	}
 </script>
 
-<nav class="md:h-[7vh] w-full sticky top-0 z-20 bg-woodsmoke border-b border-shark">
+<nav class="md:h-[7vh] w-full z-20 bg-woodsmoke border-b border-shark">
 	<div class="max-w-7xl h-full mx-auto flex-center justify-between p-3">
 		<div class="lg:block hidden" />
 

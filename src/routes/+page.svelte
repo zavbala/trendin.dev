@@ -15,7 +15,7 @@
 
 	<div class="grid md:grid-cols-2 gap-3">
 		{#each Object.values(data.apple) as item}
-			<Card headline="App of the day" {...item} />
+			<Card {...item} />
 		{/each}
 	</div>
 </div>

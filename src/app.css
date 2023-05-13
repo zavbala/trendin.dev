@@ -40,6 +40,10 @@
 }
 
 @layer components {
+	.large-sticky {
+		@apply lg:sticky lg:top-0 lg:h-screen;
+	}
+
 	.flex-center {
 		@apply flex items-center justify-center;
 	}
@@ -48,15 +52,15 @@
 		@apply transform duration-75 hover:-translate-y-1;
 	}
 
+	.pill {
+		@apply flex gap-x-2 rounded-full bg-white px-3 py-1 text-sm font-bold text-black;
+	}
+
 	.action {
 		@apply flex h-10 w-10 items-center justify-center rounded bg-shark p-2;
 	}
 
 	.card {
 		@apply animation relative cursor-pointer select-none rounded border-white/20 bg-shark p-7 shadow;
-	}
-
-	.pill {
-		@apply flex gap-x-2 rounded-full bg-white/10 px-3 py-1 text-sm;
 	}
 }

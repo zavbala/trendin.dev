@@ -9,6 +9,7 @@ export interface Item {
 export interface Props {
 	icon: string;
 	entry?: string;
+	disabled?: boolean;
 	schema: Record<string, string>;
 }
 
@@ -20,7 +21,7 @@ export interface Social extends Props {
 	options?: string[];
 	args?: Record<string, string>;
 	params?: Record<string, string[]>;
-	sort?: 'byQueryParams' | 'byPathParams';
+	sort?: 'byQueryParams' | 'byPathParams' | 'byIndex';
 }
 
 export interface App {

@@ -9,10 +9,11 @@
 			"votes": ""
 		},
 		"selector": "article",
-		"options": ["global", "javascript", "typescript", "python", "rust"],
+		"options": ["", "javascript", "typescript", "python", "rust"],
 		"sort": "byPathParams"
 	},
 	"product-hunt": {
+		"disabled": true,
 		"icon": "fa-product-hunt",
 		"base": "https://api.producthunt.com/v1/posts",
 		"schema": {
@@ -56,9 +57,11 @@
 		"schema": {
 			"topic": "t",
 			"source": "l",
+			"tagline": "s",
 			"thumbnail": "i"
 		},
-		"entry": "epc.2.e",
-		"options": ["today", "this week", "this month"]
+		"entry": "epc.0.e",
+		"options": ["featured", "this week", "today", "this month", "popular", "recently added"],
+		"sort": "byIndex"
 	}
 }

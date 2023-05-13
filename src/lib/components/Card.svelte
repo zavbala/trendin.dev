@@ -2,9 +2,9 @@
 	export let name: string;
 	export let icon: string;
 	export let cover: string;
-	export let tagline: string;
-	export let headline: string;
 	export let source: string;
+	export let tagline: string;
+	// export const headline: string;
 </script>
 
 <article class="bg-shark rounded-lg shadow">
@@ -24,6 +24,6 @@
 			</div>
 		</div>
 
-		<a href={source} target="_blank" rel="noreferrer" class="uppercase pill"> VIEW </a>
+		<a href={source} target="_blank" rel="noreferrer noopener" class="uppercase pill"> VIEW </a>
 	</div>
 </article>

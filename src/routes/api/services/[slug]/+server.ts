@@ -25,8 +25,18 @@ export const GET = async ({ params, url }: RequestEvent) => {
 	if (sortBy && service.options?.includes(sortBy)) {
 		if (service.sort === 'byQueryParams') {
 			fetchURL += `?sortBy=${sortBy}`;
-		} else if (service.sort === 'byPathParams') {
+		}
+
+		if (service.sort === 'byPathParams') {
 			fetchURL += `/${sortBy}`;
+		}
+
+		// TODO: Adapt each social service to this format, currently only working with vscode
+		if (service.sort === 'byIndex') {
+			const [st, , rd] = (props.entry as string).split('.');
+			const index = props.options?.indexOf(sortBy) ?? 2;
+
+			props.entry = `${st}.${index}.${rd}`;
 		}
 	}
 

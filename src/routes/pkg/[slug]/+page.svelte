@@ -5,9 +5,9 @@
 	export let data: { pkg: string; items: Package[] };
 </script>
 
-<div class="flex justify-between my-5">
+<div class="flex justify-between my-5 sticky top-0">
 	<span />
-	<Selector children={[]} />
+	<Selector name="filter" value="" on:change children={['Init']} />
 </div>
 
 <table class="w-full text-sm">

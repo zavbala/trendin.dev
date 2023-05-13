@@ -12,6 +12,7 @@
 	$: pathname = $page.url.pathname;
 
 	const toggleView = () => (isOpen = !isOpen);
+	const disabledClasses = 'text-white/40 pointer-events-none';
 </script>
 
 <button class="uppercase my-5 flex items-center justify-between w-full" on:click={toggleView}>
@@ -26,6 +27,7 @@
 			<a
 				href={`/${sub}/${key}`}
 				class="font-mono text-sm rounded uppercase hover:bg-shark p-2
+				{values.disabled && disabledClasses}
             {pathname.includes(key) && 'border-white/60 border'}"
 			>
 				<i class="fa-brands {values?.icon}" />
