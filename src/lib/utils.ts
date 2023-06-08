@@ -59,8 +59,10 @@ export const getAttrByPath = (obj: Record<string, any>, path: string) =>
 	path.split('.').reduce((prev, current) => prev[current], obj);
 
 export const readSchema = (fileName: string) => {
-	const path = process.env.NODE_ENV === 'production' ? '/schemas' : '/static/schemas';
-	const schema = readFileSync(process.cwd() + `${path}/${fileName}.gql`, 'utf-8');
+	const path =
+		process.env.NODE_ENV === 'production' ? '/schemas' : `${process.cwd()}/static/schemas`;
+
+	const schema = readFileSync(`${path}/${fileName}.gql`, 'utf-8');
 	return gql(schema);
 };
 
