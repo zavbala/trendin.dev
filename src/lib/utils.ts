@@ -59,13 +59,20 @@ export const normalizeJSON = (schema: Record<string, string>, item: Record<strin
 export const getAttrByPath = (obj: Record<string, any>, path: string) =>
 	path.split('.').reduce((prev, current) => prev[current], obj);
 
-export const readSchema = (fileName: string) => {
+export const readSchema = async (fileName: string) => {
 	const path =
 		process.env.NODE_ENV === 'production'
 			? import.meta.env.VITE_DOMAIN + '/schemas'
 			: `${process.cwd()}/static/schemas`;
 
-	const schema = readFileSync(`${path}/${fileName}.gql`, 'utf-8');
+	let schema = '';
+
+	if (process.env.NODE_ENV === 'production') {
+		schema = await (await fetch(`${path}/${fileName}.gql`)).text();
+	} else {
+		schema = readFileSync(`${path}/${fileName}.gql`, 'utf-8');
+	}
+
 	return gql(schema);
 };
 
