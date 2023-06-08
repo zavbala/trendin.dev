@@ -61,6 +61,6 @@
 	}
 
 	.card {
-		@apply animation relative cursor-pointer select-none rounded border-white/20 bg-shark p-7 shadow;
+		@apply animation relative flex cursor-pointer select-none flex-col gap-y-3 rounded border-b border-white/10 p-7 shadow;
 	}
 }

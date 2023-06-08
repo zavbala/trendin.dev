@@ -8,6 +8,7 @@
 
 <form id="newsletter" class="flex gap-x-2 my-3" action={SUBSCRIBE_URL} method="POST">
 	<input
+		disabled
 		required
 		id="MERGE0"
 		type="email"
@@ -15,7 +16,8 @@
 		placeholder="foo@bar.com"
 		class="bg-shark px-4 py-2 rounded grow font-mono font-regular h-10"
 	/>
-	<button type="submit" class="bg-white w-10 h-10 flex-center px-2 py-2 rounded">
+
+	<button disabled type="submit" class="bg-white w-10 h-10 flex-center px-2 py-2 rounded">
 		<Icon class="w-4 h-4 text-black" src={PaperAirplane} />
 	</button>
 </form>

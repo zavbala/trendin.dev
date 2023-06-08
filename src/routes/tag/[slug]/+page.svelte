@@ -30,13 +30,11 @@
 	<meta name="description" content="" />
 </svelte:head>
 
-<div
-	class="flex items-center justify-between w-full sticky top-0 z-20 bg-woodsmoke h-[10vh] border-b border-shark"
->
+<div class="flex items-center justify-between w-full sticky top-0 z-20 bg-woodsmoke h-[10vh]">
 	<h1 class="lg:text-lg text-sm">Showing {data.items.length} results</h1>
 
 	<div class="flex items-center gap-x-3">
-		{#if data.tabs}
+		{#if data.tabs?.length}
 			<Selector name="sortBy" children={data.tabs} on:change={newSorting} bind:value={current} />
 		{/if}
 

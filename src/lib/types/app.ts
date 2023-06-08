@@ -3,6 +3,7 @@ export interface Item {
 	source: string;
 	tagline?: string;
 	thumbnail?: string;
+	__typename?: string;
 	votes?: number | string;
 }
 
@@ -13,7 +14,14 @@ export interface Props {
 	schema: Record<string, string>;
 }
 
+export interface GQL {
+	client: string;
+	query: string;
+	vars: Record<string, string>;
+}
+
 export interface Social extends Props {
+	gql?: GQL;
 	base: string;
 	auth?: string[];
 	token?: string[];

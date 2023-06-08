@@ -3,38 +3,37 @@
 		"icon": "fa-github",
 		"base": "https://github.com/trending",
 		"schema": {
-			"topic": "> h2 > a > span",
+			"topic": "> h2 > a",
 			"tagline": "> p",
 			"source": "> h2 > a",
-			"votes": ""
+			"votes": "a.Link--muted"
 		},
 		"selector": "article",
 		"options": ["", "javascript", "typescript", "python", "rust"],
 		"sort": "byPathParams"
 	},
 	"product-hunt": {
-		"disabled": true,
-		"icon": "fa-product-hunt",
-		"base": "https://api.producthunt.com/v1/posts",
-		"schema": {
-			"topic": "name",
-			"tagline": "tagline",
-			"votes": "votes_count",
-			"source": "redirect_url",
-			"thumbnail": "thumbnail.image_url"
+		"gql": {
+			"query": "ph",
+			"client": "ProductHunt",
+			"vars": { "kind": "POPULAR" }
 		},
-		"entry": "posts",
-		"token": ["Bearer", "PRODUCT_HUNT_DEV_TOKEN"]
+		"icon": "fa-product-hunt",
+		"schema": {
+			"thumbnail": "https://ph-files.imgix.net/",
+			"source": ["https://www.producthunt.com/posts/", "topic", "hyphenate"]
+		},
+		"entry": "homefeed.edges.0.node.items"
 	},
 	"indie-hackers": {
 		"icon": "fa-hackerrank",
 		"base": "https://www.indiehackers.com",
 		"schema": {
-			"topic": "> div > a",
-			"votes": "> a > span",
-			"source": "> div > a"
+			"topic": "h3.story__title",
+			"votes": "span.story__count-number",
+			"source": "> a"
 		},
-		"selector": "div.feed-item"
+		"selector": "div.homepage-post"
 	},
 	"hacker-news": {
 		"icon": "fa-y-combinator",

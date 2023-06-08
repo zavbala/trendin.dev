@@ -54,11 +54,14 @@
 		<Sidenav />
 	{/if}
 
-	<div class="lg:col-span-7 col-span-12 flex flex-col gap-y-3 mb-5 px-5">
+	<div class="lg:col-span-7 col-span-12 flex flex-col gap-y-3 mb-5 px-5 order-2">
 		<slot />
 	</div>
 
-	<div class="large-sticky lg:col-span-3 col-span-12 p-5">
+	<div
+		class="large-sticky lg:col-span-3 col-span-12 p-5
+		{$preview.direction === 'LTR' ? 'order-3' : 'order-1'}"
+	>
 		<div class="bg-shark w-full h-[250px] rounded-lg mx-auto shadow" />
 
 		<Newsletter />
@@ -66,7 +69,7 @@
 		<footer class="mt-7">
 			<a
 				target="_blank"
-				rel="noreferrer"
+				rel="noreferrer noopener"
 				class="mt-2 text-xs text-center"
 				href="https://github.com/zavbala/trendin.dev"
 			>

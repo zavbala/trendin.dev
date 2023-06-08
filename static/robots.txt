@@ -1,1 +1,3 @@
+Allow: *
 User-Agent: *
+Disallow: /api/

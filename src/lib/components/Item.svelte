@@ -10,7 +10,7 @@
 
 <a
 	target="_blank"
-	class="card {className}"
+	class="card group {className}"
 	rel="noreferrer noopener"
 	href={prefix ? prefix + source : source}
 >
@@ -19,8 +19,8 @@
 			<img
 				alt="Thumbnail"
 				src={thumbnail}
-				class="w-14 h-14 rounded-lg"
 				on:dragstart|preventDefault
+				class="w-14 h-14 rounded-lg"
 			/>
 		{/if}
 
@@ -33,9 +33,9 @@
 		</div>
 	</div>
 
-	<span class="border border-white/10 my-4" />
-
-	<div class="flex justify-between">
+	<div
+		class="flex justify-between opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-150 ease-out"
+	>
 		<div />
 
 		{#if votes}

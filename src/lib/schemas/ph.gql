@@ -1,0 +1,16 @@
+query HomePage($kind: HomefeedKindEnum!) {
+	homefeed(kind: $kind) {
+		edges {
+			node {
+				items {
+					... on Post {
+						tagline
+						topic: name
+						votes: votesCount
+						thumbnail: thumbnailImageUuid
+					}
+				}
+			}
+		}
+	}
+}
