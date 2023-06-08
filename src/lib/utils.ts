@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { Item } from '$lib/types/app';
 import { gql } from '@urql/core';
 import { readFileSync } from 'fs';
+
+import type { Item } from '$lib/types/app';
 import type { HTMLElement } from 'node-html-parser';
 
 export const normalizeHTML = (
@@ -60,7 +61,9 @@ export const getAttrByPath = (obj: Record<string, any>, path: string) =>
 
 export const readSchema = (fileName: string) => {
 	const path =
-		process.env.NODE_ENV === 'production' ? '/schemas' : `${process.cwd()}/static/schemas`;
+		process.env.NODE_ENV === 'production'
+			? import.meta.env.VITE_DOMAIN + '/schemas'
+			: `${process.cwd()}/static/schemas`;
 
 	const schema = readFileSync(`${path}/${fileName}.gql`, 'utf-8');
 	return gql(schema);
