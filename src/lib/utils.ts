@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { gql } from '@urql/core';
-import { readFileSync } from 'fs';
 
 import type { Item } from '$lib/types/app';
 import type { HTMLElement } from 'node-html-parser';
@@ -60,18 +59,8 @@ export const getAttrByPath = (obj: Record<string, any>, path: string) =>
 	path.split('.').reduce((prev, current) => prev[current], obj);
 
 export const readSchema = async (fileName: string) => {
-	const path =
-		process.env.NODE_ENV === 'production'
-			? import.meta.env.VITE_DOMAIN + '/schemas'
-			: `${process.cwd()}/static/schemas`;
-
-	let schema = '';
-
-	if (process.env.NODE_ENV === 'production') {
-		schema = await (await fetch(`${path}/${fileName}.gql`)).text();
-	} else {
-		schema = readFileSync(`${path}/${fileName}.gql`, 'utf-8');
-	}
+	const path = `${import.meta.env.VITE_DOMAIN}/schemas/${fileName}.gql`;
+	const schema = await (await fetch(path)).text();
 
 	return gql(schema);
 };

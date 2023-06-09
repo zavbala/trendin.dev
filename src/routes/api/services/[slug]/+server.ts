@@ -19,7 +19,8 @@ export const GET = async ({ params, url }: RequestEvent) => {
 
 	if ('gql' in props) {
 		const { client, query: fileName, vars } = service?.gql as GQL;
-		const query = readSchema(fileName);
+
+		const query = await readSchema(fileName);
 		const response = await Clients[client as ClientType].query(query, vars);
 
 		// TODO: Verify why on client side PH is throwing ADS
