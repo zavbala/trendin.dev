@@ -46,7 +46,7 @@ export const normalizeJSON = (schema: Record<string, string>, item: Record<strin
 		if (value.split('.').length >= 2) {
 			computed = getAttrByPath(item, value);
 		} else {
-			computed = item[value];
+			computed = item[value] ?? '';
 		}
 
 		data[key as keyof Item] = (computed as any) ?? '';
@@ -56,7 +56,7 @@ export const normalizeJSON = (schema: Record<string, string>, item: Record<strin
 };
 
 export const getAttrByPath = (obj: Record<string, any>, path: string) =>
-	path.split('.').reduce((prev, current) => prev[current], obj);
+	path.split('.').reduce((prev, current) => prev[current] ?? '', obj);
 
 export const readSchema = async (fileName: string) => {
 	const path = `${import.meta.env.VITE_DOMAIN}/schemas/${fileName}.gql`;

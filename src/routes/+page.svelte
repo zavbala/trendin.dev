@@ -2,7 +2,7 @@
 	import Card from '$lib/components/Card.svelte';
 	import type { App } from '$lib/types/app';
 
-	export let data: { apple: App[] };
+	export let data: { apple: { apps: App[] } };
 </script>
 
 <svelte:head>
@@ -14,7 +14,7 @@
 	<h3 class="md:mb-7 mb-4">Daily Apps / Apple</h3>
 
 	<div class="grid md:grid-cols-2 gap-3">
-		{#each Object.values(data.apple) as item}
+		{#each data.apple.apps as item}
 			<Card {...item} />
 		{/each}
 	</div>

@@ -14,7 +14,7 @@
 		"schema": {
 			"name": "attributes.editorialNotes.name",
 			"tagline": "attributes.editorialNotes.short",
-			"cover": "attributes.editorialArtwork.dayCard.url",
+			"cover": "attributes.editorialArtwork.generalCard.url",
 			"source": "relationships.card-contents.data.0.attributes.url",
 			"icon": "relationships.card-contents.data.0.attributes.platformAttributes.ios.artwork.url"
 		},

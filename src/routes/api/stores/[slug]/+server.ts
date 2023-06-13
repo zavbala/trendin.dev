@@ -23,15 +23,14 @@ export const GET = async ({ params }: RequestEvent) => {
 
 	const data = await resp.json();
 
-	const [app, game] = getAttrByPath(data, store.entry)
-		.reverse()
-		.slice(0, 2)
+	const apps = getAttrByPath(data, store.entry)
+		.filter((item: never) => item['attributes']['kind'] === 'App')
 		.map((item: never) => normalizeJSON(store.schema, item))
 		.map((item: App) => ({
 			...item,
-			icon: item.icon.replace('{w}x{h}{c}.{f}', '800x800.jpg'),
-			cover: item.cover.replace('{w}x{h}{c}.{f}', '1600x980.jpg')
+			icon: item.icon.replace('{w}x{h}{c}.{f}', '800x800.jpg') ?? '',
+			cover: item.cover.replace('{w}x{h}{c}.{f}', '1600x980.jpg') ?? ''
 		}));
 
-	return json({ apple: { app, game } });
+	return json({ apple: { apps } });
 };
