@@ -5,7 +5,7 @@ import { PaperAirplane } from '@steeze-ui/heroicons';
 import { Icon } from '@steeze-ui/svelte-icon';
 </script>
 
-<h3 class="my-3">Subscribe to our newsletter</h3>
+<h1 class="my-3">Subscribe to our newsletter</h1>
 
 <form id="newsletter" class="my-3 flex gap-x-2" action={SUBSCRIBE_URL} method="POST">
 	<input
