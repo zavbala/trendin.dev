@@ -1,11 +1,12 @@
 <script lang="ts">
-	import type { Item } from '$lib/types/app';
+import type { Item } from '$lib/types/app';
 
-	export let item: Item;
-	export let className = '';
-	export let prefix: string | null = null;
+export let item: Item;
+export let className = '';
+export let prefix: string | null = null;
+export let showImageLoader: boolean = false;
 
-	const { tagline, topic, thumbnail, source, votes } = item;
+const { tagline, topic, thumbnail, source, votes } = item;
 </script>
 
 <a
@@ -20,21 +21,23 @@
 				alt="Thumbnail"
 				src={thumbnail}
 				on:dragstart|preventDefault
-				class="w-14 h-14 rounded-lg"
+				class="h-14 w-14 rounded-lg"
 			/>
+		{:else if !thumbnail && showImageLoader}
+			<div class="h-14 w-14 animate-pulse rounded-lg bg-shark" />
 		{/if}
 
 		<div class="flex flex-col gap-y-2">
-			<h1 class="sm:text-2xl text-xl font-body italic font-bold break-words">{topic}</h1>
+			<h1 class="break-words font-body text-xl font-bold italic sm:text-2xl">{topic}</h1>
 
 			{#if tagline}
-				<small class="font-mono font-normal break-words">{tagline}</small>
+				<small class="break-words font-mono font-normal">{tagline}</small>
 			{/if}
 		</div>
 	</div>
 
 	<div
-		class="flex justify-between opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-150 ease-out"
+		class="flex justify-between opacity-100 transition-all duration-150 ease-out lg:opacity-0 lg:group-hover:opacity-100"
 	>
 		<div />
 

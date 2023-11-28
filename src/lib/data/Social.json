@@ -1,16 +1,16 @@
 {
 	"github": {
-		"icon": "fa-github",
 		"base": "https://github.com/trending",
 		"schema": {
-			"topic": "> h2 > a",
 			"tagline": "> p",
+			"topic": "> h2 > a",
 			"source": "> h2 > a",
 			"votes": "a.Link--muted"
 		},
 		"selector": "article",
+		"sort": "byPathParams",
 		"options": ["", "javascript", "typescript", "python", "rust"],
-		"sort": "byPathParams"
+		"icon": "<svg fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\" height=\"16\" width=\"15.5\" viewBox=\"0 0 496 512\"><path d=\"M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z\"/></svg>"
 	},
 	"product-hunt": {
 		"gql": {
@@ -18,37 +18,37 @@
 			"client": "ProductHunt",
 			"vars": { "kind": "POPULAR" }
 		},
-		"icon": "fa-product-hunt",
 		"schema": {
 			"thumbnail": "https://ph-files.imgix.net/",
 			"source": ["https://www.producthunt.com/posts/", "topic", "hyphenate"]
 		},
-		"entry": "homefeed.edges.0.node.items"
+		"entry": "homefeed.edges.0.node.items",
+		"icon": "<svg fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\" height=\"16\" width=\"16\" viewBox=\"0 0 512 512\"><path d=\"M326.3 218.8c0 20.5-16.7 37.2-37.2 37.2h-70.3v-74.4h70.3c20.5 0 37.2 16.7 37.2 37.2zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-128.1-37.2c0-47.9-38.9-86.8-86.8-86.8H169.2v248h49.6v-74.4h70.3c47.9 0 86.8-38.9 86.8-86.8z\"/></svg>"
 	},
 	"indie-hackers": {
-		"icon": "fa-hackerrank",
 		"base": "https://www.indiehackers.com",
 		"schema": {
+			"source": "> a",
 			"topic": "h3.story__title",
-			"votes": "span.story__count-number",
-			"source": "> a"
+			"votes": "span.story__count-number"
 		},
-		"selector": "div.homepage-post"
+		"selector": "div.homepage-post",
+		"icon": "<svg fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\" height=\"16\" width=\"16\" viewBox=\"0 0 512 512\"><path d=\"M477.5 128C463 103.1 285.1 0 256.2 0S49.3 102.8 34.8 128s-14.5 230.8 0 256 192.4 128 221.3 128S463 409.1 477.5 384s14.5-231 0-256zM316.1 414.2c-4 0-40.9-35.8-38-38.7 .9-.9 6.3-1.5 17.6-1.8 0-26.2 .6-68.6 .9-86.3 0-2-.4-3.4-.4-5.9h-79.9c0 7.1-.5 36.2 1.4 72.9 .2 4.5-1.6 6-5.7 5.9-10.1 0-20.3-.1-30.4-.1-4.1 0-5.9-1.5-5.7-6.1 .9-33.4 3-84-.2-212.7v-3.2c-9.7-.4-16.4-1-17.3-1.8-2.9-2.9 34.5-38.7 38.5-38.7s41.2 35.8 38.3 38.7c-.9 .9-7.9 1.5-16.8 1.8v3.2c-2.4 25.8-2 79.6-2.6 105.4h80.3c0-4.6 .4-34.7-1.2-83.6-.1-3.4 1-5.2 4.2-5.2 11.1-.1 22.2-.1 33.2-.1 3.5 0 4.6 1.7 4.5 5.4C333 354.6 336 341.3 336 373.7c8.9 .4 16.8 1 17.7 1.8 2.9 2.9-33.6 38.7-37.6 38.7z\"/></svg>"
+
 	},
 	"hacker-news": {
-		"icon": "fa-y-combinator",
 		"base": "https://news.ycombinator.com",
 		"schema": {
 			"topic": "span.titleline > a",
 			"source": "span.titleline > a",
 			"votes": "span.subline > span.score"
 		},
+		"sort": "byPathParams",
 		"selector": "tr.athing",
 		"options": ["newest", "show", "ask", "jobs"],
-		"sort": "byPathParams"
+		"icon": "<svg fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\" height=\"16\" width=\"14\" viewBox=\"0 0 448 512\"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d=\"M448 96c0-35.3-28.7-64-64-64H64C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96zM21 229.2c0 0 .1-.1 .1-.2s.1-.2 .2-.2c0 .1 0 .3-.1 .4H21zM239.2 384H207.8V281.3L128 128h37.3c41.5 77.7 48.1 95.8 54.1 112c1.6 4.3 3.1 8.5 5.2 13.6c3.2-7 5.1-11.9 7.1-17.3c5.9-15.3 12.8-33.2 53.5-108.3H320L239.2 283.1V384z\"/></svg>"
 	},
 	"vscode": {
-		"icon": "fa-microsoft",
 		"base": "https://marketplace.visualstudio.com/getextensionspercategory",
 		"args": {
 			"Product": "vscode"
@@ -59,8 +59,9 @@
 			"tagline": "s",
 			"thumbnail": "i"
 		},
+		"sort": "byIndex",
 		"entry": "epc.0.e",
 		"options": ["featured", "this week", "today", "this month", "popular", "recently added"],
-		"sort": "byIndex"
+		"icon": "<svg fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\" height=\"16\" width=\"14\" viewBox=\"0 0 448 512\"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d=\"M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z\"/></svg>"
 	}
 }

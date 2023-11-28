@@ -1,34 +1,34 @@
 <script lang="ts">
-	import { browser, dev } from '$app/environment';
-	import { page } from '$app/stores';
-	import Newsletter from '$lib/components/Newsletter.svelte';
-	import Sidenav from '$lib/components/Sidenav.svelte';
-	import Topnav from '$lib/components/Topnav.svelte';
-	import { preview, toggle } from '$lib/stores/preview';
-	import { inject } from '@vercel/analytics';
+import { browser, dev } from '$app/environment';
+import { page } from '$app/stores';
+import Newsletter from '$lib/components/Newsletter.svelte';
+import Sidenav from '$lib/components/Sidenav.svelte';
+import Topnav from '$lib/components/Topnav.svelte';
+import { preview, toggle } from '$lib/stores/preview';
+import { inject } from '@vercel/analytics';
+import { afterNavigate } from '$app/navigation';
 
-	import { afterNavigate } from '$app/navigation';
-	import '../app.css';
+import '../app.css';
 
-	inject({ mode: dev ? 'development' : 'production' });
+inject({ mode: dev ? 'development' : 'production' });
 
-	afterNavigate(() => {
-		if (window.innerWidth <= 820) {
-			toggle('showSidebar', false);
-		}
-	});
-
-	$: pathname = $page.url.pathname;
-	$: link = import.meta.env.VITE_DOMAIN + pathname;
-
-	const title = 'Trendin - Developer Trends';
-	const tagline = 'Your new start page.';
-
-	$: {
-		if (browser && window.innerWidth <= 820) {
-			document.body.style.overflow = $preview.showSidebar ? 'hidden' : '';
-		}
+afterNavigate(() => {
+	if (window.innerWidth <= 820) {
+		toggle('showSidebar', false);
 	}
+});
+
+$: pathname = $page.url.pathname;
+$: link = import.meta.env.VITE_DOMAIN + pathname;
+
+const title = 'Trendin - Developer Trends';
+const tagline = 'Your new start page.';
+
+$: {
+	if (browser && window.innerWidth <= 820) {
+		document.body.style.overflow = $preview.showSidebar ? 'hidden' : '';
+	}
+}
 </script>
 
 <svelte:head>
@@ -49,20 +49,20 @@
 
 <Topnav />
 
-<main class="max-w-7xl mx-auto grid grid-cols-12 mt-5">
+<main class="mx-auto mt-5 grid max-w-7xl grid-cols-12">
 	{#if $preview.showSidebar}
 		<Sidenav />
 	{/if}
 
-	<div class="lg:col-span-7 col-span-12 flex flex-col gap-y-3 mb-5 px-5 order-2">
+	<div class="order-2 col-span-12 mb-5 flex flex-col gap-y-3 px-5 lg:col-span-7">
 		<slot />
 	</div>
 
 	<div
-		class="large-sticky lg:col-span-3 col-span-12 p-5
+		class="large-sticky col-span-12 p-5 lg:col-span-3
 		{$preview.direction === 'LTR' ? 'order-3' : 'order-1'}"
 	>
-		<div class="bg-shark w-full h-[250px] rounded-lg mx-auto shadow" />
+		<div class="mx-auto h-[250px] w-full rounded-lg bg-shark shadow" />
 
 		<Newsletter />
 
@@ -70,7 +70,7 @@
 			<a
 				target="_blank"
 				rel="noreferrer noopener"
-				class="mt-2 text-xs text-center"
+				class="mt-2 text-center text-xs"
 				href="https://github.com/zavbala/trendin.dev"
 			>
 				Open Source
