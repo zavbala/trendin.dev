@@ -13,12 +13,15 @@ export let children: Record<string, any>;
 $: pathname = $page.url.pathname;
 
 const disabledClasses = 'text-white/40 pointer-events-none';
-const Style = 'font-mono text-sm rounded uppercase hover:bg-shark p-2 flex items-center gap-x-3';
+const Style = 'font-mono text-sm rounded uppercase lg:hover:bg-shark p-2 flex items-center gap-x-3';
 
 const toggleView = () => (isOpen = !isOpen);
 </script>
 
-<button class="my-5 flex w-full items-center justify-between uppercase" on:click={toggleView}>
+<button
+	on:click={toggleView}
+	class="my-2 flex w-full items-center justify-between p-2 uppercase lg:hover:bg-shark"
+>
 	<span class={$preview.direction === 'LTR' ? 'order-1' : 'order-2'}>{title}</span>
 
 	<Icon
@@ -27,22 +30,17 @@ const toggleView = () => (isOpen = !isOpen);
 	/>
 </button>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
 {#if isOpen}
-	<ul transition:slide class="ml-3 flex flex-col gap-y-3">
+	<ul transition:slide class="ml-5 flex flex-col gap-y-3">
 		{#each Object.entries(children) as [key, values]}
 			<li>
 				<a
 					href={`/${sub}/${key}`}
 					class="{Style}
 				{values.disabled && disabledClasses}
-            	{pathname.includes(key) && 'border border-white/60'}
+            	{pathname.includes(key) && 'bg-shark'}
 				{$preview.direction === 'LTR' ? 'justify-start' : 'justify-end'}"
 				>
-					<!-- <i
-					class="fa-brands {values?.icon} {$preview.direction === 'LTR' ? 'order-1' : 'order-2'}"
-				/> -->
-
 					{@html values?.icon}
 
 					<span class={$preview.direction === 'LTR' ? 'order-2' : 'order-1'}>

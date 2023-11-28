@@ -5,6 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource/ibm-plex-mono':
+    specifier: ^5.0.8
+    version: 5.0.8
+  '@fontsource/ibm-plex-sans':
+    specifier: ^5.0.17
+    version: 5.0.17
   '@urql/core':
     specifier: ^4.2.0
     version: 4.2.0
@@ -367,6 +373,14 @@ packages:
     resolution: {integrity: sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA==}
     engines: {node: '>=14'}
     dev: true
+
+  /@fontsource/ibm-plex-mono@5.0.8:
+    resolution: {integrity: sha512-AoR7K2YtlGKy3LApyLYjqjyz0o8XtkRvbB/juMsGSGNayBBAly140ykZls+VxcXjZSLQpp2RyxKo6lYOuHPmUw==}
+    dev: false
+
+  /@fontsource/ibm-plex-sans@5.0.17:
+    resolution: {integrity: sha512-VakeugSZf9MA/bGyMH27Cgwvc0v5lxBlmFKz7xE5ESFprXwMYfttkzRIkPw+B8st90GfsLYrkHOfGcjgdweuRQ==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.13:
     resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==}

@@ -40,6 +40,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource/ibm-plex-mono": "^5.0.8",
+		"@fontsource/ibm-plex-sans": "^5.0.17",
 		"@urql/core": "^4.2.0",
 		"@vercel/analytics": "^1.1.1",
 		"date-fns": "^2.30.0",

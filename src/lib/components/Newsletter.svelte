@@ -1,5 +1,6 @@
 <script lang="ts">
 import { SUBSCRIBE_URL } from '$lib/mailchimp';
+import { preview } from '$lib/stores/preview';
 import { PaperAirplane } from '@steeze-ui/heroicons';
 import { Icon } from '@steeze-ui/svelte-icon';
 </script>
@@ -23,6 +24,9 @@ import { Icon } from '@steeze-ui/svelte-icon';
 		aria-label="Subscribe"
 		class="flex-center h-10 w-10 rounded bg-white px-2 py-2"
 	>
-		<Icon class="h-4 w-4 text-black" src={PaperAirplane} />
+		<Icon
+			src={PaperAirplane}
+			class="h-4 w-4 text-black {$preview.direction === "LTR" ? "rotate-0" : "-rotate-180"}"
+		/>
 	</button>
 </form>

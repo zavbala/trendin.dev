@@ -24,6 +24,10 @@
 		@apply outline-none;
 	}
 
+	button:active {
+		@apply scale-95 transform;
+	}
+
 	a,
 	svg,
 	img,
@@ -31,6 +35,10 @@
 	button,
 	select {
 		@apply block;
+	}
+
+	button {
+		@apply cursor-pointer;
 	}
 
 	button,

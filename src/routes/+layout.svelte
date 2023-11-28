@@ -1,21 +1,22 @@
 <script lang="ts">
 import { browser, dev } from '$app/environment';
+import { afterNavigate } from '$app/navigation';
 import { page } from '$app/stores';
 import Newsletter from '$lib/components/Newsletter.svelte';
 import Sidenav from '$lib/components/Sidenav.svelte';
 import Topnav from '$lib/components/Topnav.svelte';
 import { preview, toggle } from '$lib/stores/preview';
 import { inject } from '@vercel/analytics';
-import { afterNavigate } from '$app/navigation';
+
+import '@fontsource/ibm-plex-mono';
+import '@fontsource/ibm-plex-sans';
 
 import '../app.css';
 
 inject({ mode: dev ? 'development' : 'production' });
 
 afterNavigate(() => {
-	if (window.innerWidth <= 820) {
-		toggle('showSidebar', false);
-	}
+	if (window.innerWidth <= 820) toggle('showSidebar', false);
 });
 
 $: pathname = $page.url.pathname;
